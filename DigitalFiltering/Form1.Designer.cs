@@ -28,21 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            ((System.ComponentModel.ISupportInitialize)chartControl1).BeginInit();
+            SuspendLayout();
+            // 
+            // chartControl1
+            // 
+            chartControl1.Location = new System.Drawing.Point(69, 33);
+            chartControl1.Name = "chartControl1";
+            chartControl1.Size = new System.Drawing.Size(300, 200);
+            chartControl1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 278);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1059, 613);
+            Controls.Add(chartControl1);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)chartControl1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
+        private DevExpress.XtraCharts.ChartControl chartControl1;
     }
 }
 

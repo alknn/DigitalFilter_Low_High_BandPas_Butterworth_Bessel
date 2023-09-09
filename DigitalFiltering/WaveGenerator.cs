@@ -45,10 +45,6 @@ namespace DigitalFiltering
                     break;
             }
         }
-
-
-
-
         double t = 0;
         private double GenerateSinewave( )
         {
