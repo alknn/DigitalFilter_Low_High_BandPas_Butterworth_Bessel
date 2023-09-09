@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.1.*-*" />
+    <PackageReference Include="FFTW.NET" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="HighPassFilter\" />
+    <Folder Include="LowPassFilter\" />
+    <Folder Include="BandPassFilter\" />
   </ItemGroup>
 
 </Project>
