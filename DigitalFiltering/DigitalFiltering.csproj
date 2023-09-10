@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.1.*-*" />
     <PackageReference Include="FFTW.NET" Version="1.0.1" />
+    <PackageReference Include="SharedMemory" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>
