@@ -15,8 +15,9 @@ namespace DigitalFiltering
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
         Random random = new Random();
-        const int ViewportPointCount = 600;
+        const int ViewportPointCount = 1000;
         ObservableCollection<DataPoint> dataPoints = new ObservableCollection<DataPoint>();
+        WaveGenerator waveGenerator = new WaveGenerator(WaveType.Sinewave);
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace DigitalFiltering
         private void Form1_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 10;
+            timer.Interval = 1;
             timer.Start();
             timer.Tick += Timer_Tick;
             chartControl1.Dock = DockStyle.Fill;
@@ -40,7 +41,8 @@ namespace DigitalFiltering
             LineSeriesView seriesView = (LineSeriesView)series.View;
             seriesView.LastPoint.LabelDisplayMode = SidePointDisplayMode.SeriesPoint;
             seriesView.LastPoint.Label.TextPattern = "{V:f2}";
-            seriesView.Color = Color.FromKnownColor((KnownColor)random.Next(0, 100));
+            //seriesView.Color = Color.FromKnownColor((KnownColor)random.Next(0, 100));
+            seriesView.Color = Color.Black;
 
             XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
             diagram.AxisX.DateTimeScaleOptions.ScaleMode = ScaleMode.Continuous;
@@ -49,21 +51,26 @@ namespace DigitalFiltering
             diagram.AxisX.VisualRange.EndSideMargin = 200;
             diagram.DependentAxesYRange = DefaultBoolean.True;
             diagram.AxisY.WholeRange.AlwaysShowZeroLevel = false;
+            WaveGenerator.Frequency = 100;
+            waveGenerator.Amplitude = 1;
+           // waveGenerator.SampleCount = 600;
         }
+        int i = 0;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            dataPoints.Add(new DataPoint(DateTime.Now,));
+            dataPoints.Add(new DataPoint(i,waveGenerator.GenerateWave.Invoke()));
             if (dataPoints.Count > ViewportPointCount)
                 dataPoints.RemoveAt(0);
             chartControl1.Refresh();
+            i++;
         }
     }
 
     public class DataPoint
     {
-        public DateTime Argument { get; set; }
+        public int Argument { get; set; }
         public double Value { get; set; }
-        public DataPoint(DateTime argument, double value)
+        public DataPoint(int argument, double value)
         {
             Argument = argument;
             Value = value;
